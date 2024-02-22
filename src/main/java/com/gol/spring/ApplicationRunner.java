@@ -1,6 +1,7 @@
 package com.gol.spring;
 
 import com.gol.spring.database.pool.ConnectionPool;
+import com.gol.spring.database.repository.CompanyRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class ApplicationRunner {
@@ -9,5 +10,8 @@ public class ApplicationRunner {
 //      clazz -> String -> Map<String, Object>
         var connectionPool = context.getBean("p1", ConnectionPool.class);
         System.out.println(connectionPool);
+
+        var companyRepository = context.getBean("companyRepository", CompanyRepository.class);
+        System.out.println(companyRepository);
     }
 }
