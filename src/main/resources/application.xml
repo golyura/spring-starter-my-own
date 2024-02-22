@@ -7,15 +7,13 @@
         <constructor-arg type="java.lang.String" value="PostgresDriver"/>
     </bean>
 
-    <bean id="pool1" name="p1,p2,p3" class="com.gol.spring.database.pool.ConnectionPool" scope="prototype">
+    <bean id="pool1" name="p1,p2,p3" class="com.gol.spring.database.pool.ConnectionPool"
+          init-method="init"
+          destroy-method="destroy"
+          scope="singleton">
         <constructor-arg name="username" type="java.lang.String" ref="driver"/>
         <constructor-arg name="properties" type="java.util.Map">
             <null/>
-<!--            <map>-->
-<!--                <entry key="url" value="postgresurl"/>-->
-<!--                <entry key="password" value="123"/>-->
-<!--                <entry key="driver" value-ref="driver"/>-->
-<!--            </map>-->
         </constructor-arg>
         <constructor-arg name="poolSize" type="java.lang.Integer" value="10"/>
         <constructor-arg name="args" type="java.util.List">
