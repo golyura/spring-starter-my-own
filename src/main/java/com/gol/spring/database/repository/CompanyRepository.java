@@ -5,6 +5,7 @@ import com.gol.spring.bpp.Transaction;
 import com.gol.spring.database.entity.Company;
 import com.gol.spring.database.pool.ConnectionPool;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -21,7 +22,7 @@ public class CompanyRepository implements CrudRepository<Integer, Company> {
     private final List<ConnectionPool> pools;
     private final Integer poolSize;
 
-    public CompanyRepository(ConnectionPool pool1,
+    public CompanyRepository(@Qualifier("pool1") ConnectionPool pool1,
                              List<ConnectionPool> pools,
                              @Value("${db.pool.size}") Integer poolSize) {
         this.pool1 = pool1;
