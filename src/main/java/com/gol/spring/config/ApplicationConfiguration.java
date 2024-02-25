@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 //@ImportResource("classpath:application.xml")
 @Import(WebConfiguration.class)
-@Configuration
+@Configuration(proxyBeanMethods = true)
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "com.gol.spring",
         useDefaultFilters = false,
@@ -34,6 +34,8 @@ public class ApplicationConfiguration {
         }
 
         @Bean
+        @Profile("prod|web")
+//    ! & |
         public UserRepository userRepository2(@Qualifier("pool2") ConnectionPool pool2) {
                 return new UserRepository(pool2);
         }
