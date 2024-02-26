@@ -1,4 +1,4 @@
-package com.gol.spring.service;
+package com.gol.spring;
 
 import com.gol.spring.database.entity.Company;
 import com.gol.spring.database.repository.CrudRepository;
