@@ -13,14 +13,6 @@ import org.springframework.stereotype.Component;
 //@ImportResource("classpath:application.xml")
 @Import(WebConfiguration.class)
 @Configuration(proxyBeanMethods = true)
-@PropertySource("classpath:application.properties")
-@ComponentScan(basePackages = "com.gol.spring",
-        useDefaultFilters = false,
-        includeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, value = Component.class),
-                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = CrudRepository.class),
-                @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com\\..+Repository")
-        })
 public class ApplicationConfiguration {
         @Bean("pool2")
         @Scope(BeanDefinition.SCOPE_SINGLETON)

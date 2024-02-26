@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '3.2.3'
     id "io.spring.dependency-management" version '1.1.4'
+    id "io.freefair.lombok" version '8.6'
     id 'java'
 }
 
@@ -16,10 +17,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework:spring-core:6.1.4'
-    implementation 'org.springframework:spring-context:6.1.4'
-    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0-M1'
-    implementation 'org.postgresql:postgresql:42.7.2'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.postgresql:postgresql'
 
 
 

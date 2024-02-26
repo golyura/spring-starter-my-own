@@ -3,17 +3,14 @@ package com.gol.spring.service;
 import com.gol.spring.database.entity.Company;
 import com.gol.spring.database.repository.CrudRepository;
 import com.gol.spring.database.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
+    @Qualifier("userRepository")
     private final UserRepository userRepository;
     private final CrudRepository<Integer, Company> companyRepository;
-
-    public UserService(@Qualifier("userRepository") UserRepository userRepository,
-                       CrudRepository<Integer, Company> companyRepository) {
-        this.userRepository = userRepository;
-        this.companyRepository = companyRepository;
-    }
 }
