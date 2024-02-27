@@ -1,7 +1,7 @@
 package com.gol.spring.integration.annotation;
 
+import com.gol.spring.integration.TestApplicationRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.lang.annotation.ElementType;
@@ -11,7 +11,8 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest
 @ActiveProfiles("test")
+@SpringBootTest(classes = TestApplicationRunner.class)
 public @interface IT {
 }
+

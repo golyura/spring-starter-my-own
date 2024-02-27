@@ -1,12 +1,11 @@
 package com.gol.spring.integration.service;
 
-import com.gol.spring.CompanyService;
+import com.gol.spring.service.CompanyService;
 import com.gol.spring.config.DatabaseProperties;
 import com.gol.spring.dto.CompanyReadDto;
 import com.gol.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

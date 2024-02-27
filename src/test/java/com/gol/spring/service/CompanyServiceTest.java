@@ -1,7 +1,5 @@
 package com.gol.spring.service;
 
-import com.gol.spring.CompanyService;
-import com.gol.spring.UserService;
 import com.gol.spring.database.entity.Company;
 import com.gol.spring.database.repository.CrudRepository;
 import com.gol.spring.dto.CompanyReadDto;
