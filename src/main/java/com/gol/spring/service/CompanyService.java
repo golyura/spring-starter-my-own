@@ -1,13 +1,13 @@
 package com.gol.spring.service;
 
-import com.gol.spring.database.entity.Company;
-import com.gol.spring.database.repository.CrudRepository;
+import com.gol.spring.database.repository.CompanyRepository;
 import com.gol.spring.dto.CompanyReadDto;
 import com.gol.spring.listener.entity.AccessType;
 import com.gol.spring.listener.entity.EntityEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -15,10 +15,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CompanyService {
 
-    private final CrudRepository<Integer, Company> companyRepository;
+    private final CompanyRepository companyRepository;
     private final UserService userService;
     private final ApplicationEventPublisher eventPublisher;
 
+    @Transactional
     public Optional<CompanyReadDto> findById(Integer id) {
         return companyRepository.findById(id)
                 .map(entity -> {

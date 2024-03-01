@@ -1,7 +1,7 @@
 package com.gol.spring.service;
 
 import com.gol.spring.database.entity.Company;
-import com.gol.spring.database.repository.CrudRepository;
+import com.gol.spring.database.repository.CompanyRepository;
 import com.gol.spring.dto.CompanyReadDto;
 import com.gol.spring.listener.entity.EntityEvent;
 import org.junit.jupiter.api.Test;
@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.context.ApplicationEventPublisher;
 
+import java.util.Collections;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,7 +25,7 @@ class CompanyServiceTest {
     private static final Integer COMPANY_ID = 1;
 
     @Mock
-    private CrudRepository<Integer, Company> companyRepository;
+    private CompanyRepository companyRepository;
     @Mock
     private UserService userService;
     @Mock
@@ -34,10 +35,8 @@ class CompanyServiceTest {
 
     @Test
     void findById() {
-        doReturn(Optional.of(new Company(COMPANY_ID)))
+        doReturn(Optional.of(new Company(COMPANY_ID,null, Collections.emptyMap())))
                 .when(companyRepository).findById(COMPANY_ID);
-//        when(companyRepository.findById(COMPANY_ID))
-//                .thenReturn(Optional.of(new Company(COMPANY_ID)));
 
         var actualResult = companyService.findById(COMPANY_ID);
         assertTrue(actualResult.isPresent());
