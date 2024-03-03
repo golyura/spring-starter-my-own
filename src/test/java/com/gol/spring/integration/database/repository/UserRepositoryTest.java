@@ -23,7 +23,7 @@ public class UserRepositoryTest {
     private final UserRepository userRepository;
 
     @Test
-    @Commit
+//    @Commit
     void checkAuditing() {
         var user = userRepository.findById(1L).get();
         user.setBirthDate(user.getBirthDate().plusYears(1L));
@@ -34,7 +34,7 @@ public class UserRepositoryTest {
     @Test
     void checkCustomImplementation() {
         UserFilter filter = new UserFilter(
-                null, "%ov%", LocalDate.now()
+                null, "ov", LocalDate.now()
         );
         var users = userRepository.findAllByFilter(filter);
         assertThat(users).hasSize(4);
