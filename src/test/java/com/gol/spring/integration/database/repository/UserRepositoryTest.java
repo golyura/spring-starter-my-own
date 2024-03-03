@@ -4,6 +4,7 @@ package com.gol.spring.integration.database.repository;
 import com.gol.spring.database.entity.Role;
 import com.gol.spring.database.entity.User;
 import com.gol.spring.database.repository.UserRepository;
+import com.gol.spring.dto.UserFilter;
 import com.gol.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,15 @@ import static org.junit.jupiter.api.Assertions.*;
 @RequiredArgsConstructor
 public class UserRepositoryTest {
     private final UserRepository userRepository;
+
+    @Test
+    void checkCustomImplementation() {
+        UserFilter filter = new UserFilter(
+                null, "%ov%", LocalDate.now()
+        );
+        var users = userRepository.findAllByFilter(filter);
+        assertThat(users).hasSize(4);
+    }
 
     @Test
     void checkProjections() {
