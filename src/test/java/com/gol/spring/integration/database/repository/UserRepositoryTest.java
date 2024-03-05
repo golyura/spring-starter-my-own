@@ -5,21 +5,23 @@ import com.gol.spring.database.entity.Role;
 import com.gol.spring.database.entity.User;
 import com.gol.spring.database.repository.UserRepository;
 import com.gol.spring.dto.UserFilter;
+import com.gol.spring.integration.IntegrationTestBase;
 import com.gol.spring.integration.annotation.IT;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-@IT
+
 @RequiredArgsConstructor
-public class UserRepositoryTest {
+public class UserRepositoryTest extends IntegrationTestBase {
     private final UserRepository userRepository;
 
     @Test
