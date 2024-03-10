@@ -4,6 +4,7 @@ import com.gol.spring.database.entity.Role;
 import com.gol.spring.database.entity.User;
 import com.gol.spring.dto.PersonalInfo;
 import com.gol.spring.dto.UserFilter;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
