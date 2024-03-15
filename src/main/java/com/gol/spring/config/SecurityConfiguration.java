@@ -2,6 +2,7 @@ package com.gol.spring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -17,10 +18,11 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests.anyRequest().authenticated())
-                .formLogin(login -> login
-                        .loginPage("/login")
-                        .defaultSuccessUrl("/users")
-                        .permitAll());
+                .httpBasic(Customizer.withDefaults());
+//                .formLogin(login -> login
+//                        .loginPage("/login")
+//                        .defaultSuccessUrl("/users")
+//                        .permitAll());
 
         return http.build();
     }
