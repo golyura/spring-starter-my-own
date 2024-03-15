@@ -21,6 +21,10 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((requests) -> requests.anyRequest().authenticated())
 //                .httpBasic(Customizer.withDefaults());
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+                        .deleteCookies("JSESSIONID"))
                 .formLogin(login -> login
                         .loginPage("/login")
                         .defaultSuccessUrl("/users")
