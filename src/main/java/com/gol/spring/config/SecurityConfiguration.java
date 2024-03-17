@@ -16,12 +16,11 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @Configuration
 @EnableMethodSecurity
 //@EnableWebSecurity
-//@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(AbstractHttpConfigurer::disable)
+//                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(urlConfig -> urlConfig
                         .requestMatchers(antMatcher("/login/**"), antMatcher("/users/registration/**"), antMatcher("/v3/api-docs/**"), antMatcher("/swagger-ui/**")).permitAll()
                         .requestMatchers(antMatcher("/users/{\\d+}/delete")).hasAuthority(ADMIN.getAuthority())
