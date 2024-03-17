@@ -24,7 +24,6 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(urlConfig -> urlConfig
                         .requestMatchers(antMatcher("/login/**"), antMatcher("/users/registration/**"), antMatcher("/v3/api-docs/**"), antMatcher("/swagger-ui/**")).permitAll()
-                        .requestMatchers(antMatcher("/users")).permitAll()
                         .requestMatchers(antMatcher("/users/{\\d+}/delete")).hasAuthority(ADMIN.getAuthority())
                         .requestMatchers(antMatcher("/admin/**")).hasAuthority(ADMIN.getAuthority())
                         .anyRequest().authenticated()
